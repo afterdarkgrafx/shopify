@@ -1,0 +1,26 @@
+
+<div class="product-recommendations">
+        <div class="page-width">
+         
+            <div class="section-block__header text-center">
+              <h4 class="h1--mini section-block__title">More Products by  <a style="color:red;" href="/collections/{{ product.vendor | handleize }}">{{ product.vendor }}</a></h4>
+            </div>
+       
+          <div class="section-block">
+            <div class="grid grid--no-gutters grid--uniform">
+              
+              
+              {% assign mycollection = product.vendor | handle %}
+
+               {%- for product in collections[mycollection].products limit: 5 -%}
+              
+                <div class="grid__item small--one-half medium-up--one-fifth{% if forloop.index == 6 %} medium-up--hide{% endif %}">
+                  {%- include 'product-card', product: product, collection: collection -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+
+       
